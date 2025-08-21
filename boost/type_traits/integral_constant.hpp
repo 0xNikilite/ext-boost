@@ -10,7 +10,7 @@
 #include <boost/detail/workaround.hpp>
 
 #if (BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1400)) \
-   || BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x610)) \
+   || BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x610)) \
    || BOOST_WORKAROUND(__DMC__, BOOST_TESTED_AT(0x840)) \
    || BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3202)) \
    || BOOST_WORKAROUND(BOOST_INTEL_CXX_VERSION, BOOST_TESTED_AT(810)) )\
@@ -60,10 +60,11 @@ namespace boost{
       operator const mpl::integral_c<T, val>& ()const
       {
          static const char data[sizeof(long)] = { 0 };
-         static const void* pdata = data;
-         return *(reinterpret_cast<const mpl::integral_c<T, val>*>(pdata));
+         const void* const pdata = data;
+         return *static_cast<const mpl::integral_c<T, val>*>(pdata);
       }
-      BOOST_CONSTEXPR operator T()const { return val; }
+      BOOST_CONSTEXPR operator T()const BOOST_NOEXCEPT { return val; }
+      BOOST_CONSTEXPR T operator()()const BOOST_NOEXCEPT { return val; }
    };
 
    template <class T, T val>
@@ -80,10 +81,11 @@ namespace boost{
       operator const mpl::bool_<val>& ()const
       {
          static const char data[sizeof(long)] = { 0 };
-         static const void* pdata = data;
-         return *(reinterpret_cast<const mpl::bool_<val>*>(pdata));
+         const void* const pdata = data;
+         return *static_cast<const mpl::bool_<val>*>(pdata);
       }
-      BOOST_CONSTEXPR operator bool()const { return val; }
+      BOOST_CONSTEXPR operator bool()const BOOST_NOEXCEPT { return val; }
+      BOOST_CONSTEXPR bool operator()()const BOOST_NOEXCEPT { return val; }
    };
 
    template <bool val>
