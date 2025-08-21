@@ -1,4 +1,4 @@
-Boost libraries - trimmed down for yuzu
+Boost libraries - trimmed down for oboromi
 ========================================
 
 This is a subset of Boost v1.89.0 generated using the bcp tool. To get a list of boost modules guaranteed to exist, check the build script.
