@@ -1,7 +1,7 @@
-Boost libraries - trimmed down for yuzu
+Boost libraries - trimmed down for oboromi
 ========================================
 
-This is a subset of Boost v1.71.0 generated using the bcp tool. To get a list of boost modules guaranteed to exist, check the build script.
+This is a subset of Boost v1.89.0 generated using the bcp tool. To get a list of boost modules guaranteed to exist, check the build script.
 
 Updating this repo (on Windows)
 ===============================
@@ -11,7 +11,7 @@ To update the Boost version (or to add a new library) follow these steps:
   - Download Boost and extract the package, then launch Powershell and `cd` to the `boost_1_xx_0` directory.
   - Build the `bcp` tool:
     ```
-    .\boostrap.bat
+    .\bootstrap.bat
     .\b2 tools\bcp
     ```
 

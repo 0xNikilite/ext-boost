@@ -23,7 +23,9 @@
 #include <boost/range/iterator.hpp>
 #include <boost/range/value_type.hpp>
 #include <boost/range/detail/misc_concept.hpp>
+#include <boost/mpl/assert.hpp>
 #include <boost/type_traits/remove_reference.hpp>
+#include <boost/type_traits/is_integral.hpp>
 
 #include <iterator>
 
@@ -84,7 +86,7 @@ namespace boost {
     #endif
 #endif
 
-    #ifdef __BORLANDC__
+    #ifdef BOOST_BORLANDC
         #define BOOST_RANGE_ENABLE_CONCEPT_ASSERT 0
     #endif
 
